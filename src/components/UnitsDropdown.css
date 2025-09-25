@@ -1,0 +1,142 @@
+.units-dropdown {
+  position: relative;
+}
+
+.units-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background: var(--neutral-700);
+  color: var(--neutral-0);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.units-trigger:hover {
+  background: var(--neutral-600);
+}
+
+.units-trigger img {
+  width: 16px;
+  height: 16px;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.units-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.units-menu {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  right: 0;
+  background: var(--neutral-800);
+  border: 1px solid var(--neutral-600);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  min-width: 300px;
+  z-index: 1000;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.units-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--neutral-600);
+}
+
+.units-header h4 {
+  color: var(--neutral-0);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.unit-section {
+  margin-bottom: var(--spacing-sm);
+}
+
+.unit-option {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--neutral-700);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.unit-option:hover {
+  border-color: var(--neutral-600);
+  background: var(--neutral-700);
+}
+
+.unit-option.active {
+  border-color: var(--blue-500);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.unit-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.unit-label {
+  color: var(--neutral-0);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.unit-main img {
+  width: 16px;
+  height: 16px;
+}
+
+.unit-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.unit-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-label {
+  color: var(--neutral-300);
+  font-size: 0.85rem;
+}
+
+.detail-value {
+  color: var(--neutral-200);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .units-menu {
+    right: -50px;
+    min-width: 280px;
+  }
+}
