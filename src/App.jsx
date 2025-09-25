@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import React from 'react';
 import SearchBar from './components/SearchBar'
 import WeatherCard from './components/WeatherCard'
 import WeatherMetrics from './components/WeatherMetrics'
