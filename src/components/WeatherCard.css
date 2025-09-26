@@ -5,7 +5,7 @@
   padding: var(--spacing-xl);
   color: var(--neutral-0);
   overflow: hidden;
-  min-height: 300px;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,14 +50,14 @@
 
 .location h2 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: var(--spacing-xs);
 }
 
 .location p {
   color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .weather-main {
@@ -68,8 +68,8 @@
 }
 
 .weather-icon img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 .temperature {
@@ -78,28 +78,32 @@
 
 .temp-value {
   font-family: var(--font-display);
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .weather-time p {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
   .weather-card {
     padding: var(--spacing-lg);
-    min-height: 250px;
+    min-height: 240px;
   }
 
   .temp-value {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
 
   .weather-icon img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .location h2 {
+    font-size: 1.5rem;
   }
 }

@@ -13,30 +13,26 @@ function SearchBar({ onSearch, loading }) {
   }
 
   return (
-      <div className={"search-bar-container"}>
-
-    <form className="search-bar "  onSubmit={handleSubmit}>
-      <div className="search-input-container" >
-          <img src="/assets/images/icon-search.svg" alt="Search" />
+    <form className="search-bar" onSubmit={handleSubmit}>
+      <div className="search-input-container">
+        <img src="/assets/images/icon-search.svg" alt="Search" />
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for a city, e.g., New York"
+          placeholder="Search for a place..."
           className="search-input"
           disabled={loading}
         />
       </div>
+      <button
+        type="submit"
+        className="search-button"
+        disabled={loading || !query.trim()}
+      >
+        Search
+      </button>
     </form>
-        <button
-
-          type="submit"
-          className="search-button"
-          disabled={loading || !query.trim()}
-        >
-          <span>Search</span>
-        </button>
-      </div>
   )
 }
 
