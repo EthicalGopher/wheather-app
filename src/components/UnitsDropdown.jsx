@@ -1,82 +1,124 @@
-import { useState } from 'react'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import React from "react"
+
+// --- Asset Imports ---
+import iconUnits from '../../assets/images/icon-units.svg'
+import tick from '../../assets/images/icon-checkmark.svg'
+
+// --- CSS Import ---
+// Make sure to import the corresponding CSS file.
 import './UnitsDropdown.css'
 
-function UnitsDropdown({ units, onUnitsChange }) {
-  const [isOpen, setIsOpen] = useState(false)
+export default function UnitsDropdown({temperature,setTemperature,windSpeed,setWindSpeed,precipitation,setPrecipitation}) {
+    return (
+        <Menu as="div" className="units-dropdown">
 
-  const unitOptions = [
-    { value: 'metric', label: 'Metric', temp: 'Celsius (°C)', wind: 'km/h', precip: 'mm' },
-    { value: 'imperial', label: 'Imperial', temp: 'Fahrenheit (°F)', wind: 'mph', precip: 'in' }
-  ]
+            <MenuButton className="units-trigger">
+                <img src={iconUnits} alt="Units Icon" />
+                <span>Units</span>
+                <ChevronDownIcon aria-hidden="true" className="dropdown-icon" />
+            </MenuButton>
 
-  const currentUnit = unitOptions.find(option => option.value === units)
-
-  const handleUnitChange = (newUnits) => {
-    onUnitsChange(newUnits)
-    setIsOpen(false)
-  }
-
-  return (
-    <div className="units-dropdown">
-      <button 
-        className="units-trigger"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <img src="/assets/images/icon-units.svg" alt="Units" />
-        <span>Units</span>
-        <img 
-          src="/assets/images/icon-dropdown.svg" 
-          alt="Dropdown" 
-          className={`dropdown-icon ${isOpen ? 'open' : ''}`}
-        />
-      </button>
-
-      {isOpen && (
-        <div className="units-menu">
-          <div className="units-header">
-            <h4>Switch to Imperial/Metric</h4>
-          </div>
-          
-          {unitOptions.map((option) => (
-            <div key={option.value} className="unit-section">
-              <button
-                className={`unit-option ${units === option.value ? 'active' : ''}`}
-                onClick={() => handleUnitChange(option.value)}
-              >
-                <div className="unit-main">
-                  <span className="unit-label">{option.label}</span>
-                  {units === option.value && (
-                    <img src="/assets/images/icon-checkmark.svg" alt="Selected" />
-                  )}
+            <MenuItems
+                transition
+                className="units-menu"
+            >
+                {/* Temperature Section */}
+                <div className="unit-section">
+                    <p className="section-title">
+                        Temperature
+                    </p>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${temperature.celsius ? "active" : ''}`}
+                            onClick={() => {
+                                setTemperature({ "celsius": true, "fahrenheit": false });
+                                setWindSpeed({ "km/h": true, "mph": false });
+                                setPrecipitation({ "millimeters": true, "inches": false });
+                            }}
+                        >
+                            <span>Celsius (°C)</span>
+                            {temperature.celsius && (
+                                <img src={tick} alt="Selected" />
+                            )}
+                        </button>
+                    </MenuItem>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${temperature.fahrenheit ? "active" : ''}`}
+                            onClick={() => {
+                                setTemperature({"celsius":false,"fahrenheit":true});
+                                setWindSpeed({ "km/h": false, "mph": true });
+                                setPrecipitation({ "millimeters": false, "inches": true });
+                            }}
+                        >
+                            <span>Fahrenheit (°F)</span>
+                            {temperature.fahrenheit && (
+                                <img src={tick} alt="Selected" />
+                            )}
+                        </button>
+                    </MenuItem>
                 </div>
-                <div className="unit-details">
-                  <div className="unit-detail">
-                    <span className="detail-label">Temperature:</span>
-                    <span className="detail-value">{option.temp}</span>
-                  </div>
-                  <div className="unit-detail">
-                    <span className="detail-label">Wind Speed:</span>
-                    <span className="detail-value">{option.wind}</span>
-                  </div>
-                  <div className="unit-detail">
-                    <span className="detail-label">Precipitation:</span>
-                    <span className="detail-value">{option.precip}</span>
-                  </div>
-                </div>
-              </button>
-            </div>
-          ))}
-        </div>
-      )}
 
-      {isOpen && (
-        <div 
-          className="units-overlay" 
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-    </div>
-  )
+                {/* Wind Speed Section */}
+                <div className="unit-section">
+                    <p className="section-title">
+                        Wind Speed
+                    </p>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${windSpeed["km/h"] ? "active" : ''}`}
+                            onClick={() => setWindSpeed({"km/h":true,"mph":false})}
+                        >
+                            <span>km/h</span>
+                            {windSpeed["km/h"] && (
+                                <img src={tick} alt="Selected" />
+                            )}
+                        </button>
+                    </MenuItem>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${windSpeed.mph ? "active" : ''}`}
+                            onClick={() => setWindSpeed({"km/h":false,"mph":true})}
+                        >
+                            <span>mph</span>
+                            {windSpeed.mph && (
+                                <img src={tick} alt="Selected" />
+                            )}
+                        </button>
+                    </MenuItem>
+                </div>
+
+                {/* Precipitation Section */}
+                <div className="unit-section">
+                    <p className="section-title">
+                        Precipitation
+                    </p>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${precipitation.millimeters ? "active" : ''}`}
+                            onClick={() => setPrecipitation({ "millimeters": true, "inches": false })}
+                        >
+                            <span>Millimeters (mm)</span>
+                            {precipitation.millimeters && (
+                                <img src={tick} alt="Selected"/>
+                            )}
+                        </button>
+                    </MenuItem>
+                    <MenuItem>
+                        <button
+                            className={`unit-option ${precipitation.inches ? "active" : ''}`}
+                            onClick={() => setPrecipitation({ "millimeters": false, "inches": true })}
+                        >
+                            <span>Inches (in)</span>
+                            {precipitation.inches && (
+                                <img src={tick} alt="Selected"/>
+                            )}
+                        </button>
+                    </MenuItem>
+                </div>
+            </MenuItems>
+        </Menu>
+    )
 }
-
-export default UnitsDropdown

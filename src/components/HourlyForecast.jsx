@@ -1,5 +1,6 @@
 import { formatTemperature } from '../utils/weatherUtils'
 import './HourlyForecast.css'
+import React from "react"
 
 function HourlyForecast({ data, selectedDay, units }) {
   // Get 24 hours starting from the selected day

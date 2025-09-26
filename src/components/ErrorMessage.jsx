@@ -1,4 +1,5 @@
 import './ErrorMessage.css'
+import React from "react"
 
 function ErrorMessage({ message, onRetry }) {
   return (

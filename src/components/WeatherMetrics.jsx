@@ -1,5 +1,6 @@
 import { formatTemperature, formatWindSpeed, formatPrecipitation } from '../utils/weatherUtils'
 import './WeatherMetrics.css'
+import React from "react"
 
 function WeatherMetrics({ data, units }) {
   const metrics = [

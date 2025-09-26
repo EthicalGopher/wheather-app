@@ -1,5 +1,6 @@
 import { getWeatherIcon, formatTemperature } from '../utils/weatherUtils'
 import './WeatherCard.css'
+import React from "react"
 
 function WeatherCard({ data, location, units }) {
   const iconSrc = getWeatherIcon(data.weather_code)

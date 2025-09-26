@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './SearchBar.css'
+import React from "react"
 
 function SearchBar({ onSearch, loading }) {
   const [query, setQuery] = useState('')
@@ -12,8 +13,11 @@ function SearchBar({ onSearch, loading }) {
   }
 
   return (
-    <form className="search-bar" onSubmit={handleSubmit}>
-      <div className="search-input-container">
+      <div className={"search-bar-container"}>
+
+    <form className="search-bar "  onSubmit={handleSubmit}>
+      <div className="search-input-container" >
+          <img src="/assets/images/icon-search.svg" alt="Search" />
         <input
           type="text"
           value={query}
@@ -22,16 +26,17 @@ function SearchBar({ onSearch, loading }) {
           className="search-input"
           disabled={loading}
         />
-        <button 
-          type="submit" 
+      </div>
+    </form>
+        <button
+
+          type="submit"
           className="search-button"
           disabled={loading || !query.trim()}
         >
-          <img src="/assets/images/icon-search.svg" alt="Search" />
           <span>Search</span>
         </button>
       </div>
-    </form>
   )
 }
 

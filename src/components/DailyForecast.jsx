@@ -1,6 +1,6 @@
 import { getWeatherIcon, formatTemperature } from '../utils/weatherUtils'
 import './DailyForecast.css'
-
+import React from "react"
 function DailyForecast({ data, units, selectedDay, onDaySelect }) {
   const getDayName = (dateString, index) => {
     if (index === 0) return 'Today'

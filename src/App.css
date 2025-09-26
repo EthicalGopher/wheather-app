@@ -57,7 +57,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: var(--neutral-800);
+
 }
 
 .logo img {
@@ -73,19 +73,20 @@ body {
 }
 
 .search-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: center;
   text-align: center;
   margin-bottom: var(--spacing-xl);
 }
 
 .search-section h1 {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  text-align: center;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: var(--spacing-lg);
-  background: linear-gradient(135deg, var(--blue-500), var(--orange-500));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .weather-content {
