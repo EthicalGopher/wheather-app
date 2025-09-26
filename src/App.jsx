@@ -105,6 +105,7 @@ function App() {
                 data={weatherData.hourly}
                 selectedDay={selectedDay}
                 units={units}
+                onDaySelect={setSelectedDay}
               />
             </div>
           </div>

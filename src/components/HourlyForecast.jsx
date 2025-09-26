@@ -2,7 +2,7 @@ import { formatTemperature, getWeatherIcon } from '../utils/weatherUtils'
 import './HourlyForecast.css'
 import React from "react"
 
-function HourlyForecast({ data, selectedDay, units }) {
+function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
   // Get 24 hours starting from the selected day
   const startIndex = selectedDay * 24
   const hourlyData = data.time.slice(startIndex, startIndex + 24)
@@ -18,8 +18,25 @@ function HourlyForecast({ data, selectedDay, units }) {
   }
 
   const getDayName = (selectedDay) => {
-    const days = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday']
-    return days[selectedDay] || 'Tuesday'
+    const today = new Date()
+    const targetDate = new Date(today)
+    targetDate.setDate(today.getDate() + selectedDay)
+    
+    if (selectedDay === 0) return 'Today'
+    if (selectedDay === 1) return 'Tomorrow'
+    
+    return targetDate.toLocaleDateString('en-US', { weekday: 'long' })
+  }
+
+  const getDayOptions = () => {
+    const options = []
+    for (let i = 0; i < 7; i++) {
+      options.push({
+        value: i,
+        label: getDayName(i)
+      })
+    }
+    return options
   }
 
   return (
@@ -27,7 +44,17 @@ function HourlyForecast({ data, selectedDay, units }) {
       <div className="hourly-header">
         <h3>Hourly forecast</h3>
         <div className="day-selector">
-          <span>{getDayName(selectedDay)}</span>
+          <select 
+            value={selectedDay} 
+            onChange={(e) => onDaySelect(parseInt(e.target.value))}
+            className="day-select"
+          >
+            {getDayOptions().map(option => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
           <img src="/assets/images/icon-dropdown.svg" alt="Dropdown" />
         </div>
       </div>

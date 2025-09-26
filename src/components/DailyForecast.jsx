@@ -4,6 +4,7 @@ import React from "react"
 function DailyForecast({ data, units, selectedDay, onDaySelect }) {
   const getDayName = (dateString, index) => {
     if (index === 0) return 'Today'
+    if (index === 1) return 'Tomorrow'
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', { weekday: 'short' })
   }
