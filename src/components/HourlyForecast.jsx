@@ -1,9 +1,8 @@
-import { formatTemperature, getWeatherIcon } from '../utils/weatherUtils'
+import  { formatTemperature, getWeatherIcon } from '../utils/weatherUtils'
 import './HourlyForecast.css'
 import React from "react"
 
 function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
-  // Get 24 hours starting from the selected day
   const startIndex = selectedDay * 24
   const hourlyData = data.time.slice(startIndex, startIndex + 24)
   const hourlyTemps = data.temperature_2m.slice(startIndex, startIndex + 24)
@@ -11,9 +10,9 @@ function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
 
   const formatHour = (timeString) => {
     const date = new Date(timeString)
-    return date.toLocaleTimeString('en-US', { 
+    return date.toLocaleTimeString('en-US', {
       hour: 'numeric',
-      hour12: true 
+      hour12: true
     })
   }
 
@@ -21,10 +20,10 @@ function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
     const today = new Date()
     const targetDate = new Date(today)
     targetDate.setDate(today.getDate() + selectedDay)
-    
+
     if (selectedDay === 0) return 'Today'
     if (selectedDay === 1) return 'Tomorrow'
-    
+
     return targetDate.toLocaleDateString('en-US', { weekday: 'long' })
   }
 
@@ -39,18 +38,20 @@ function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
     return options
   }
 
+
   return (
     <div className="hourly-forecast">
       <div className="hourly-header">
         <h3>Hourly forecast</h3>
-        <div className="day-selector">
-          <select 
-            value={selectedDay} 
+        <div className="day-selector" >
+          <select
+            value={selectedDay}
             onChange={(e) => onDaySelect(parseInt(e.target.value))}
             className="day-select"
+
           >
             {getDayOptions().map(option => (
-              <option key={option.value} value={option.value}>
+              <option key={option.value} value={option.value} className={"optionItems"} >
                 {option.label}
               </option>
             ))}
@@ -58,7 +59,7 @@ function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
           <img src="/assets/images/icon-dropdown.svg" alt="Dropdown" />
         </div>
       </div>
-      
+
       <div className="hourly-list">
         {hourlyData.slice(0, 8).map((time, index) => (
           <div key={index} className="hourly-item">
@@ -66,9 +67,9 @@ function HourlyForecast({ data, selectedDay, units, onDaySelect }) {
               {formatHour(time)}
             </div>
             <div className="hour-icon">
-              <img 
-                src={getWeatherIcon(hourlyWeatherCodes[index])} 
-                alt="Weather condition" 
+              <img
+                src={getWeatherIcon(hourlyWeatherCodes[index])}
+                alt="Weather condition"
               />
             </div>
             <div className="hour-temp">

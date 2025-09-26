@@ -1,6 +1,8 @@
 .weather-metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+ display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
   gap: var(--spacing-md);
 }
 
@@ -10,6 +12,8 @@
   padding: var(--spacing-lg);
   display: flex;
   align-items: center;
+  height: 100%;
+  width: 200px;
   gap: var(--spacing-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

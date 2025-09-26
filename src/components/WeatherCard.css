@@ -17,27 +17,13 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background:url("/assets/images/bg-today-large.svg");
+  background-size: cover;
   pointer-events: none;
+
 }
 
-.weather-card-background img {
-  position: absolute;
-  opacity: 0.3;
-}
 
-.bg-large {
-  top: -20px;
-  right: -20px;
-  width: 200px;
-  height: 200px;
-}
-
-.bg-small {
-  bottom: -10px;
-  left: -10px;
-  width: 100px;
-  height: 100px;
-}
 
 .weather-card-content {
   position: relative;

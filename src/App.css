@@ -70,10 +70,6 @@ body {
   font-weight: 700;
 }
 
-.logo img {
-  height: 32px;
-  width: 32px;
-}
 
 .app-main {
   flex: 1;

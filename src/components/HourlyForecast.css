@@ -4,7 +4,10 @@
   padding: var(--spacing-xl);
   height: fit-content;
 }
+.optionItems{
+  background:var(--neutral-800);
 
+}
 .hourly-header {
   display: flex;
   justify-content: space-between;
@@ -44,6 +47,7 @@
   cursor: pointer;
   appearance: none;
   padding-right: var(--spacing-lg);
+
 }
 
 .day-selector img {
@@ -113,7 +117,7 @@
     gap: var(--spacing-sm);
     align-items: flex-start;
   }
-  
+
   .hourly-item {
     padding: var(--spacing-md) 0;
   }

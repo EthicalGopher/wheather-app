@@ -9,8 +9,7 @@ function WeatherCard({ data, location, units }) {
   return (
     <div className="weather-card">
       <div className="weather-card-background">
-        <img src="/assets/images/bg-today-large.svg" alt="" className="bg-large" />
-        <img src="/assets/images/bg-today-small.svg" alt="" className="bg-small" />
+
       </div>
       
       <div className="weather-card-content">
